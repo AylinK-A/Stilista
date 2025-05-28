@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# Virtual environment
+venv/
+
+# Beget/Apache files
+.htaccess
+app.wsgi
+
+# SQLite DB backup (если не хочешь делиться)
+*.db
+
+# Mypy
+.mypy_cache/
