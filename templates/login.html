@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; margin-bottom: 20px;">Вход</h2>
+
+<form method="POST" style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+    {{ form.hidden_tag() }}
+    
+    <!-- Username Field -->
+    <div>
+        {{ form.username.label }}
+        {{ form.username(class="form-input") }}
+        {% if form.username.errors %}
+            <ul style="color: red;">
+                {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <!-- Password Field -->
+    <div>
+        {{ form.password.label }}
+        {{ form.password(class="form-input") }}
+        {% if form.password.errors %}
+            <ul style="color: red;">
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <!-- Submit Button -->
+    {{ form.submit(class="form-button") }}
+</form>
+
+<p style="text-align: center; margin-top: 20px; color: white;">
+    Нет аккаунта? <a href="{{ url_for('register') }}" style="color: white; text-decoration: underline;">Зарегистрироваться</a>
+</p>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul style="max-width: 400px; margin: 20px auto; color: red; list-style: none; padding: 0;">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}

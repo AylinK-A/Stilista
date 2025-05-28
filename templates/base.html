@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Stilista{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #111;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>

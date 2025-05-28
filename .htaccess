@@ -1,0 +1,1 @@
+WSGIScriptAlias / /home/aylin0lh/stilista/app.wsgi

@@ -1,0 +1,33 @@
+<header style="background-color: white; color: black; padding: 10px 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Левая часть: логотип -->
+        <div>
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Stilista" style="height: 80px;">
+        </div>
+
+        <!-- Правая часть -->
+        <div style="display: flex; gap: 30px; align-items: center;">
+            <a href="tel:+75956995402" style="text-decoration: none; color: black;">📞 +7 595 699 54 02</a>
+            <a href="mailto:contact@stilista.com" style="text-decoration: none; color: black;">✉️ contact@stilista.com</a>
+
+            {% if current_user.is_authenticated %}
+                <!-- Ссылка на профиль через аватар -->
+                <a href="{{ url_for('account') }}" title="Личный кабинет">
+                    <img src="{{ url_for('static', filename='images/avatar.jpg') }}" 
+                         alt="Аватар" 
+                         style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                </a>
+                <a href="{{ url_for('logout') }}" style="text-decoration: none; color: black;">Выход</a>
+            {% else %}
+            <a href="{{ url_for('account') }}" title="Личный кабинет">
+                <img src="{{ url_for('static', filename='images/avatar.jpg') }}" 
+                     alt="Аватар" 
+                     style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+
+

@@ -1,0 +1,35 @@
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <a href="{{ url_for('welcome') }}">Главная</a>
+            <p><br><br>✔️ Высокое качество и оригинальный дизайн</p>
+            <p>✔️ Постоянные скидки и акции</p>
+            <p>✔️ Индивидуальный подход к каждому клиенту</p>
+        </div>
+
+        <div class="footer-section">
+            <a href="{{ url_for('home') }}">Товары</a>
+            <p><br><br>Здесь представлены наши главные новинки этого лета!</p>
+            <p>Успей взглянуть</p>
+        </div>
+
+        <div class="footer-section">
+            <a href="{{ url_for('about') }}">О нас</a>
+            <p><br><br>Магазин стильной одежды для уверенных в себе людей.</p>
+            <p>___________</p>
+            <p><br>Мы стремимся вдохновлять наших клиентов на смелые эксперименты с образом, предоставляя высококачественные товары и услуги, которые помогут вам выделиться из толпы.</p>
+        </div>
+
+        <div class="footer-section">
+            <a href="{{ url_for('contact') }}">Контакты</a>
+            <p><br><br>Можете связаться с нами по данному номеру телефона:<br> +7 (999) 123-45-67<br><br>или отправить письмо на почту stilista@example.com</p>
+        </div>
+
+        {% if current_user.is_authenticated %}
+        <div class="footer-section">
+            <a href="{{ url_for('logout') }}">Выход</a>
+            <p><br><br>Если у вас остались вопросы, свяжитесь с нами по почте:stilista@example.com</p>
+        </div>
+        {% endif %}
+    </div>
+</footer>

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Личный кабинет</h2>
+<hr class="home-divider">
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<div style="display: flex; align-items: center; gap: 80px;">
+    <div>
+        <h3>Имя пользователя: {{ current_user.username }}</h3>
+        <form action="{{ url_for('upload_avatar') }}" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {% if form.errors %}
+                <ul>
+                    {% for field, errors in form.errors.items() %}
+                        <li>
+                            <strong>{{ field.label.text }}</strong>
+                            <ul>
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <label for="avatar">Загрузить фото:</label>
+            <input type="file" name="avatar" accept="image/*" style="margin-top: 20px; padding: 10px; font-size: 16px;">
+            <button type="submit" style="padding: 12px 25px; font-size: 12px; margin-top: 5px; background-color: white; color: black; border: 2px solid #ccc; border-radius: 10px;">Загрузить</button>
+        </form>
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename=current_user.avatar if current_user.avatar else 'images/uploads/default.jpg') }}" alt="Аватар" style="width: 220px; height: 250px; object-fit: cover; border-radius: 10px;">
+    </div>
+</div>
+
+<hr class="home-divider">
+
+<h2>Ваши избранные товары</h2>
+<div class="items">
+    {% for item in favorites %}
+        <div class="item">
+            <h3>{{ item.name }} — {{ item.price }}₽</h3>
+            <img src="{{ url_for('static', filename='images/' + item.image) }}">
+        </div>
+    {% else %}
+        <p>У вас пока нет избранных товаров.</p>
+    {% endfor %}
+</div>
+{% endblock %}
