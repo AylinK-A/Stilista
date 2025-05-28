@@ -9,9 +9,9 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 's3cr3t_k3y_123498'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/AylinA/stilista/market.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance', 'market.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = '/home/AylinA/stilista/static/images/uploads/'
+app.config['UPLOAD_FOLDER'] = 'static/images/uploads/'
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -185,7 +185,7 @@ def reset_items():
     db.session.commit()
     return "Товары обновлены!"
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
+#if __name__ == '__main__':
+    #with app.app_context():
+        #db.create_all()
+    #app.run(debug=True)
