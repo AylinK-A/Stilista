@@ -133,6 +133,15 @@ button:hover {
     text-decoration: underline;
 }
 
+.white-link {
+    color: white;
+    text-decoration: none;
+}
+.white-link:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
 /* Стили для форм */
 .form-input {
     width: 100%;
